@@ -1,0 +1,7 @@
+{
+  "name": "cypro",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
