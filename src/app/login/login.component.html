@@ -1,0 +1,42 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Celestia Collector</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="ion-text-center signin">
+    <ion-label color="primary">Sign in</ion-label>
+  </div>
+
+  <form [formGroup]="loginForm">
+    <ion-list style="padding: 30px;">
+      <ion-item>
+        <ion-label position="stacked">Email <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required formControlName="email" type="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Password <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required formControlName="password" type="password"></ion-input>
+      </ion-item>
+
+      <div class="ion-padding">
+        <ion-button expand="block" (click)="loginClick()" class="signin-button">Sign in</ion-button>
+      </div>
+    </ion-list>
+  </form>
+
+</ion-content>
+
+<div class="register-link">
+  <div class="ion-text-center">
+    <p routerLink="/register" color="light">Create Account</p>
+  </div>
+</div>

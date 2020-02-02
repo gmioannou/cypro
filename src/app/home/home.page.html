@@ -1,14 +1,69 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-title>CyPRO</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="primary" (click)="presentPopover($event)">
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+
+  <ion-fab class="spin" *ngIf="loading" vertical="center" horizontal="center">
+    <ion-spinner color="primary"></ion-spinner>
+  </ion-fab>
+
+  <div id="map" #map>
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+      <ion-fab-button [hidden]=loading class="addEventFab" (click)="showDrawer()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </div>
+
+  <ion-bottom-drawer id="bottom-sheet" [(state)]=drawerState [dockedHeight]=dockedHeight>
+
+    <div class="drawer-content">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button ion-button color="primary" (click)="hideDrawer()">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <ion-title>Capture Event</ion-title>
+        <ion-buttons slot="primary">
+          <ion-button ion-button color="primary" (click)="takePhoto()">
+            <ion-icon slot="icon-only" name="camera"></ion-icon>
+          </ion-button>
+          <ion-button ion-button color="primary" [disabled]="!eventForm.valid" (click)="captureEvent()">
+            <ion-icon slot="icon-only" name="send"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </div>
+
+    <form [formGroup]="eventForm">
+      <ion-list>
+
+        <div [ngClass]="{'featureType-thumbnail': true, 'selected': featureType.isSelected}" *ngFor="let featureType of featureLayerDomain">
+          <img (click)="selectFeatureType(featureType)" [src]="'data:image/png;base64,' + featureType.symbol.imageData" />
+          <p>{{featureType?.label}}</p> 
+        </div>
+        <ion-item>
+          <ion-label position="floating">Notes</ion-label>
+          <ion-textarea formControlName="description" autocorrect></ion-textarea>
+        </ion-item>
+
+        <div class="photo-thumbnail" *ngFor="let photo of photoListPreview; let idx = index">
+          <img [src]="photo">
+          <ion-icon color="danger" name="trash" (click)="removePhoto(idx)"></ion-icon>
+        </div>
+
+      </ion-list>
+    </form>
+
+  </ion-bottom-drawer>
+
 </ion-content>

@@ -1,1 +1,53 @@
+html, body, #map {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#map {
+  position: fixed;
+  height: 91vh;
+}
+
+.photo-thumbnail {
+  position: relative;
+  display: inline-block;
+}
+.photo-thumbnail img {
+  padding: 10px;
+  width: 180px;
+}
+.photo-thumbnail ion-icon {
+  position: absolute;
+  top: calc(20% - 10px);
+  left: calc(80% - 10px);
+  font-size: 30px;
+}
+
+.featureType-thumbnail {
+  position: relative;
+  display: inline-block;
+  padding: 1px;
+  width: 60px;
+} 
+
+.featureType-thumbnail.selected {
+  background-color: lightgray;
+} 
+
+.featureType-thumbnail img {
+  width: 70px;
+}
+
+.featureType-thumbnail p {
+  text-align: center;
+  font-size: 10px;
+  margin-top: 0px;
+}
+
+.addEventFab {
+  margin-bottom: 30px;
+  margin-right: 2px;
+}
 

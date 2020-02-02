@@ -1,0 +1,60 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Celestia Collector</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="ion-text-center register-title">
+    <ion-label color="primary">Create Account</ion-label>
+  </div>
+
+  <form [formGroup]="registerForm">
+    <ion-list style="padding: 30px;">
+      <ion-item>
+        <ion-label position="stacked">Name 
+          <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required formControlName="name" type="text"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="stacked">Email 
+          <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required formControlName="email" type="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Password 
+          <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required formControlName="password" type="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Confirm Password 
+          <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required formControlName="password_confirm" type="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Phone Number 
+          <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required formControlName="phone_number" type="text"></ion-input>
+      </ion-item>
+
+      <div class="ion-padding">
+        <ion-button expand="block" (click)="registerClick()" class="register-button">Create Account</ion-button>
+      </div>
+
+    </ion-list>
+  </form>
+
+</ion-content>
