@@ -1,6 +1,6 @@
 # CyPRO
 Collect geolocation events with pictures attachments
-This project has been developed within the scope of the CyCLOPS Project at the Cyprus University of Technology
+This app has been developed within the scope of the CyCLOPS Project, at the Cyprus University of Technology 02/02/2020
 
 ## How to deploy
 - npx cap init cypro cy.ac.cut.cypro

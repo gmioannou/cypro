@@ -203,7 +203,7 @@ export class HomePage implements OnInit {
   // present modal alert
   async presentAlert(message: string) {
     const alert = await this.alertController.create({
-      header: 'Celestia Collector',
+      header: 'CyPRO',
       message: message,
       buttons: ['OK']
     });
