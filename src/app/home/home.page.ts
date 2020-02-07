@@ -78,13 +78,15 @@ export class HomePage implements OnInit {
   }
 
   async ngOnInit() {
-    await this.authService.init_login();
-
+    
     // show splash screen
     SplashScreen.show({
       showDuration: 2000,
       autoHide: true
     });
+    
+    // initialize login user
+    await this.authService.init_login();
 
     // get mapview
     try {
