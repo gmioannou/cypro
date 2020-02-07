@@ -111,7 +111,7 @@ export class MapViewService {
 
       // create the popup template object
       var template = new PopupTemplate({
-        title: "Celectia Collector",
+        title: "CyPRO",
         content: [
           fieldInfosElement,
           attachmentsElement
