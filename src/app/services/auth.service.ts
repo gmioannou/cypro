@@ -21,16 +21,6 @@ export class AuthService {
 
   register(userData) {
     return axios.post(authUrl + '/users/register', userData)
-    // try {
-    //   const res = await axios.post(authUrl + '/users/register', userData)
-    //   console.log("Register response: ", res)
-    //   return true
-    // } catch (err) {
-    //   console.log(err)
-    //   console.log("this email is used by another account")
-    //   console.log("Unable to register")
-    //   return false
-    // }
   }
 
   async init_login() {
@@ -66,4 +56,5 @@ export class AuthService {
       }, num)
     })
   }
+  
 }
