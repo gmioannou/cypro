@@ -13,23 +13,50 @@
     <ion-label color="primary">Sign in</ion-label>
   </div>
 
-  <form [formGroup]="loginForm">
+  <form [formGroup]="loginForm" (ngSubmit)="signin()">
     <ion-list style="padding: 30px;">
+
+      <!-- Email -->
       <ion-item>
-        <ion-label position="stacked">Email <ion-text color="danger">*</ion-text>
-        </ion-label>
+        <ion-label position="stacked">Email</ion-label>
         <ion-input required formControlName="email" type="email"></ion-input>
       </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <div class="error-message"
+            *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
 
+      <!-- Password -->
       <ion-item>
-        <ion-label position="stacked">Password <ion-text color="danger">*</ion-text>
-        </ion-label>
-        <ion-input required formControlName="password" type="password"></ion-input>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div class="error-message"
+            *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Error messages -->
+      <ion-item lines="none">
+        <div class="signin-error-message" *ngIf="signinFailed">
+          {{signinFailedMessage}}
+        </div>
       </ion-item>
 
       <div class="ion-padding">
-        <ion-button expand="block" (click)="loginClick()" class="signin-button">Sign in</ion-button>
+        <ion-button expand="block" type="submit" class="signin-button">Sign in</ion-button>
       </div>
+
+      
+
     </ion-list>
   </form>
 

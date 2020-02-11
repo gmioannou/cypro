@@ -16,7 +16,7 @@ export class PopoverComponent implements OnInit {
   }
   
   async ngOnInit() { 
-    console.log(this.authService.login_user);
+    // console.log(this.authService.login_user);
   }
 
   loginClick() {

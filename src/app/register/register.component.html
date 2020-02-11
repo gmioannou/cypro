@@ -13,45 +13,104 @@
     <ion-label color="primary">Create Account</ion-label>
   </div>
 
-  <form [formGroup]="registerForm">
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
     <ion-list style="padding: 30px;">
+
+      <!-- First Name -->
       <ion-item>
-        <ion-label position="stacked">Name 
-          <ion-text color="danger">*</ion-text>
-        </ion-label>
-        <ion-input required formControlName="name" type="text"></ion-input>
+        <ion-label position="stacked">First Name</ion-label>
+        <ion-input required formControlName="firstName" type="text"></ion-input>
       </ion-item>
-      
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.firstName">
+          <div class="error-message"
+            *ngIf="registerForm.get('firstName').hasError(validation.type) && (registerForm.get('firstName').dirty || registerForm.get('firstName').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Last Name -->
       <ion-item>
-        <ion-label position="stacked">Email 
-          <ion-text color="danger">*</ion-text>
-        </ion-label>
-        <ion-input required formControlName="email" type="email"></ion-input>
+        <ion-label position="stacked">Last Name</ion-label>
+        <ion-input required formControlName="lastName" type="text"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.lastName">
+          <div class="error-message"
+            *ngIf="registerForm.get('lastName').hasError(validation.type) && (registerForm.get('lastName').dirty || registerForm.get('lastName').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Email -->
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <div class="error-message"
+            *ngIf="registerForm.get('email').hasError(validation.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Password -->
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div class="error-message"
+            *ngIf="registerForm.get('password').hasError(validation.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Confirm Password -->
+      <ion-item>
+        <ion-label position="stacked">Confirm Password</ion-label>
+        <ion-input required formControlName="confirmPassword" type="password"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="stacked">Password 
-          <ion-text color="danger">*</ion-text>
-        </ion-label>
-        <ion-input required formControlName="password" type="password"></ion-input>
-      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.confirmPassword">
+          <!-- {{validation.type}} -->
+          <div class="error-message"
+            *ngIf="registerForm.get('confirmPassword').hasError(validation.type) && (registerForm.get('confirmPassword').dirty || registerForm.get('confirmPassword').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
 
+      <!-- Phone number -->
       <ion-item>
-        <ion-label position="stacked">Confirm Password 
-          <ion-text color="danger">*</ion-text>
-        </ion-label>
-        <ion-input required formControlName="password_confirm" type="password"></ion-input>
+        <ion-label position="stacked">Phone Number</ion-label>
+        <ion-input required formControlName="phoneNumber" type="text"></ion-input>
       </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.phoneNumber">
+          <div class="error-message"
+            *ngIf="registerForm.get('phoneNumber').hasError(validation.type) && (registerForm.get('phoneNumber').dirty || registerForm.get('phoneNumber').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
 
-      <ion-item>
-        <ion-label position="stacked">Phone Number 
-          <ion-text color="danger">*</ion-text>
-        </ion-label>
-        <ion-input required formControlName="phone_number" type="text"></ion-input>
+      <!-- Error messages -->
+      <ion-item lines="none">
+        <div class="register-error-message" *ngIf="registerFailed">
+          {{registerFailedMessage}}
+        </div>
       </ion-item>
 
       <div class="ion-padding">
-        <ion-button expand="block" (click)="registerClick()" class="register-button">Create Account</ion-button>
+        <ion-button expand="block" class="register-button" type="submit">Create Account</ion-button>
       </div>
 
     </ion-list>

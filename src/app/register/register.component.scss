@@ -5,5 +5,18 @@
 }
 
 .register-button {
-    margin-top: 50px;
+    margin-top: 30px;
+}
+
+.validation-errors {
+    font-size: 12px;
+    font-style: italic;
+    color: red;
+}
+
+.register-error-message {
+    padding-top: 30px;
+    font-size: 14px;
+    font-style: italic;
+    color:#cc0000;    
 }
