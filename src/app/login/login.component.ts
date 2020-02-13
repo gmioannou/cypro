@@ -16,11 +16,11 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private navController: NavController) { }
 
   loginForm: FormGroup = this.formBuilder.group({
-    email: new FormControl('gmioannou@gmail.com', Validators.compose([
+    email: new FormControl('', Validators.compose([
       Validators.required,
       Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$")
     ])),
-    password: new FormControl('12345', Validators.compose([
+    password: new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(5),
       Validators.maxLength(8),
