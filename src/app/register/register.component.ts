@@ -33,12 +33,12 @@ export class RegisterComponent {
     ])),
     password: new FormControl('', Validators.compose([
       Validators.required,
-      Validators.minLength(5),
+      Validators.minLength(3),
       Validators.maxLength(8),
     ])),
     confirmPassword: new FormControl('', Validators.compose([
       Validators.required,
-      Validators.minLength(5),
+      Validators.minLength(3),
       Validators.maxLength(8),
     ])),
     phoneNumber: new FormControl('', Validators.compose([
@@ -93,12 +93,12 @@ export class RegisterComponent {
     ],
     'password': [
       { type: 'required', message: 'Password is required.'},
-      { type: 'minlength', message: 'Password must be at least 5 characters long'},
+      { type: 'minlength', message: 'Password must be at least 3 characters long'},
       { type: 'maxlength', message: 'Password cannot be more than 8 characters long.'},
     ],
     'confirmPassword': [
       { type: 'required', message: 'Confirm password in required.'},
-      { type: 'minlength', message: 'Password must be at least 5 characters long'},
+      { type: 'minlength', message: 'Password must be at least 3 characters long'},
       { type: 'maxlength', message: 'Password cannot be more than 8 characters long.'},
       { type: 'notMatch', message: "Password mismatch" }
     ],

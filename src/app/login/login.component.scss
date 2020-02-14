@@ -1,27 +1,27 @@
-.signin {
-    margin: 5%;
-    font-size: 25px;
+.signin-title {
+    margin-top: 3%;
+    font-size: 20px;
     letter-spacing: 1px;
 }
 
-.register-link {
-    position: absolute; 
-    bottom: 5px; width: 100%;
-}
-
 .signin-button {
-    margin-top: 30px;
+    margin: 0px;
 }
 
 .validation-errors {
-    font-size: 12px;
+    font-size: 10px;
     font-style: italic;
     color:#cc0000;
 }
 
 .signin-error-message {
-    padding-top: 30px;
-    font-size: 14px;
+    padding-top: 1px;
+    font-size: 12px;
     font-style: italic;
     color:#cc0000;    
+}
+
+.register-link {
+    position: absolute; 
+    bottom: 5px; width: 100%;
 }

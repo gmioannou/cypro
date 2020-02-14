@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     ])),
     password: new FormControl('', Validators.compose([
       Validators.required,
-      Validators.minLength(5),
+      Validators.minLength(3),
       Validators.maxLength(8),
     ])),
   });
@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
     ],
     'password': [
       { type: 'required', message: 'Password is required.' },
-      { type: 'minlength', message: 'Password must be at least 5 characters long' },
+      { type: 'minlength', message: 'Password must be at least 3 characters long' },
       { type: 'maxlength', message: 'Password cannot be more than 8 characters long.' },
     ],
   }

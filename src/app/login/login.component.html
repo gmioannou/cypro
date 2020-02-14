@@ -9,7 +9,7 @@
 
 <ion-content class="ion-padding">
 
-  <div class="ion-text-center signin">
+  <div class="ion-text-center signin-title">
     <ion-label color="primary">Sign in</ion-label>
   </div>
 
@@ -18,7 +18,7 @@
 
       <!-- Email -->
       <ion-item>
-        <ion-label position="stacked">Email</ion-label>
+        <ion-label position="stacked">Email address</ion-label>
         <ion-input required formControlName="email" type="email"></ion-input>
       </ion-item>
       <div class="validation-errors">
@@ -44,16 +44,15 @@
         </ng-container>
       </div>
 
-      <!-- Error messages -->
+      <!-- Error messages, after submit -->
       <ion-item lines="none">
         <div class="signin-error-message" *ngIf="signinFailed">
           {{signinFailedMessage}}
         </div>
       </ion-item>
 
-      <div class="ion-padding">
-        <ion-button expand="block" type="submit" class="signin-button">Sign in</ion-button>
-      </div>
+      <!-- submit button -->
+      <ion-button expand="block" type="submit" class="signin-button">Sign in</ion-button>
 
     </ion-list>
   </form>
