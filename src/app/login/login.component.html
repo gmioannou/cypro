@@ -9,6 +9,10 @@
 
 <ion-content class="ion-padding">
 
+  <ion-fab class="spin" *ngIf="loading" vertical="center" horizontal="center">
+    <ion-spinner color="primary"></ion-spinner>
+  </ion-fab>
+  
   <div class="ion-text-center signin-title">
     <ion-label color="primary">Sign in</ion-label>
   </div>
@@ -52,7 +56,10 @@
       </ion-item>
 
       <!-- submit button -->
-      <ion-button expand="block" type="submit" class="signin-button">Sign in</ion-button>
+      <div class="ion-no-padding">
+        <ion-button expand="block" type="submit" class="signin-button">Sign in</ion-button>
+        <p routerLink="/forgot" class="forgot">Forgot your password?</p>
+      </div>
 
     </ion-list>
   </form>

@@ -10,9 +10,10 @@ import { NavController } from '@ionic/angular';
 })
 export class LoginComponent implements OnInit {
 
+  loading: boolean = false;
   signinFailed: boolean = false;
   signinFailedMessage: string = "";
-  
+
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private navController: NavController) { }
 
   loginForm: FormGroup = this.formBuilder.group({
@@ -32,6 +33,9 @@ export class LoginComponent implements OnInit {
   async signin() {
     if (this.loginForm.valid) {
       const userData = this.loginForm.value;
+
+      // call auth service to login
+      this.loading = true;
       this.authService.login(userData)
         .then(res => {
           const message = res.data.message
@@ -47,13 +51,14 @@ export class LoginComponent implements OnInit {
             this.signinFailedMessage = message
             console.log(message);
           }
+          this.loading = false;
         })
         .catch((error) => {
+          this.loading = false;
           this.signinFailed = true;
           this.signinFailedMessage = error
           console.log(error);
         });
-        
     } else {
       console.log('form is not valid')
     }

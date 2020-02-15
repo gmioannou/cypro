@@ -17,4 +17,6 @@ This app has been developed within the scope of the CyCLOPS Project, at the Cypr
 
 ### Syncing the app with Capacitor
 - npx cap copy ios
+- npx cap sync ios
 - npx cap copy android
+- npx cap sync android

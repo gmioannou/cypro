@@ -11,6 +11,7 @@ import { FormValidator } from '../validators/form.validator';
 })
 export class RegisterComponent {
   
+  loading: boolean = false;
   registerFailed: boolean = false;
   registerFailedMessage: string = "";
 
@@ -52,6 +53,7 @@ export class RegisterComponent {
       const userData = this.registerForm.value;
 
       // call auth service to register
+      this.loading = true;
       this.authService.register(userData)
       .then(res => {
         const message = res.data.message
@@ -63,13 +65,14 @@ export class RegisterComponent {
           this.registerFailed = true;
           this.registerFailedMessage = message;
         }
+        this.loading = false;
       })
       .catch(error => {
-        console.log(error)
+        this.loading = false;
         this.registerFailed = true;
         this.registerFailedMessage = error;
+        console.log(error)
       });
-
     } else {
       console.log("invalid form...")
     }

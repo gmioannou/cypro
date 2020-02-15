@@ -8,7 +8,10 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-
+  <ion-fab class="spin" *ngIf="loading" vertical="center" horizontal="center">
+    <ion-spinner color="primary"></ion-spinner>
+  </ion-fab>
+  
   <div class="ion-text-center register-title">
     <ion-label color="primary">Create Account</ion-label>
   </div>
@@ -110,7 +113,9 @@
       </ion-item>
 
       <!-- submit button -->
-      <ion-button expand="block" class="register-button" type="submit">Create Account</ion-button>
+      <div class="ion-no-padding">
+        <ion-button expand="block" class="register-button" type="submit">Create Account</ion-button>
+      </div>
 
     </ion-list>
   </form>
