@@ -1,0 +1,45 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>CyPRO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-fab class="spin" *ngIf="loading" vertical="center" horizontal="center">
+    <ion-spinner color="primary"></ion-spinner>
+  </ion-fab>
+
+  <div class="ion-text-center signin-title">
+    <ion-label color="primary">Rest Password</ion-label>
+  </div>
+
+  <form [formGroup]="forgotForm" (ngSubmit)="submit()">
+    <ion-list style="padding: 30px;">
+
+      <!-- Email -->
+      <ion-item>
+        <ion-label position="stacked">Email address</ion-label>
+        <ion-input required formControlName="email" type="email"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <div class="error-message"
+            *ngIf="forgotForm.get('email').hasError(validation.type) && (forgotForm.get('email').dirty || forgotForm.get('email').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- submit button -->
+      <div class="ion-no-padding">
+        <ion-button expand="block" type="submit" class="submit-button">Submit</ion-button>
+      </div>
+
+    </ion-list>
+  </form>
+
+</ion-content>

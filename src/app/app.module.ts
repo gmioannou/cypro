@@ -13,11 +13,26 @@ import { AuthService } from './services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ForgotComponent } from './forgot/forgot.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent],
-  entryComponents: [LoginComponent, RegisterComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, ReactiveFormsModule,],
+  declarations: [
+    AppComponent, 
+    LoginComponent, 
+    RegisterComponent,
+    ForgotComponent,
+  ],
+  entryComponents: [
+    LoginComponent,
+    RegisterComponent,
+    ForgotComponent,
+  ],
+  imports: [BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [
     StatusBar,
     SplashScreen,
@@ -27,4 +42,4 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
