@@ -74,7 +74,9 @@ export class RegisterComponent {
         console.log(error)
       });
     } else {
-      console.log("invalid form...")
+      this.registerFailed = true;
+      this.registerFailedMessage = "All fields are required.";
+      console.log("Invalid form.")
     }
   }
 

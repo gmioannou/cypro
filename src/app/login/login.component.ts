@@ -14,6 +14,10 @@ export class LoginComponent implements OnInit {
   signinFailed: boolean = false;
   signinFailedMessage: string = "";
 
+  showPassword: boolean = false;
+  showPasswordIcon: string = "eye-off";
+  passwordItemType: string = "password";
+
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private navController: NavController) { }
 
   loginForm: FormGroup = this.formBuilder.group({
@@ -60,8 +64,23 @@ export class LoginComponent implements OnInit {
           console.log(error);
         });
     } else {
-      console.log('form is not valid')
+      this.signinFailed = true;
+      this.signinFailedMessage = "All fields are required.";
+      console.log('Invalid form.')
     }
+  }
+
+  toggleShowPassword() {
+    this.showPassword = !this.showPassword
+
+    if (this.showPassword) {
+      this.showPasswordIcon = "eye";
+      this.passwordItemType = "text";
+    } else {
+      this.showPasswordIcon = "eye-off";
+      this.passwordItemType = "password";
+    }
+
   }
 
   validation_messages = {
