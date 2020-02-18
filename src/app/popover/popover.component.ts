@@ -34,7 +34,7 @@ export class PopoverComponent implements OnInit {
     this.presentAlert(`
       <p>The CyCLOPS Project</p>             
       <p>Crowdsourcing App for collecting data related to <strong>Natural Hazard</strong> events.</p>
-      <p>&copy 2020, Cyprus University of Technology</p> Version 0.5`)
+      <p>&copy 2020, Cyprus University of Technology</p> Version 0.6`)
     this.popoverController.dismiss();
 
   }
