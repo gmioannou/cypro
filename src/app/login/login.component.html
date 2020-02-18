@@ -37,10 +37,10 @@
       <!-- Password -->
       <ion-item>
         <ion-label position="stacked">Password</ion-label>
-        <ion-input formControlName="password" [type]="passwordItemType"></ion-input>
-        <ion-item slot="end" lines="none" (click)="toggleShowPassword()">
-          <ion-icon [name]="showPasswordIcon"></ion-icon>
-        </ion-item>
+        <ion-input formControlName="password" [type]="passwordFieldType"></ion-input>
+        <div slot="end" (click)="toggleShowPassword()">
+          <ion-icon class="eye-icon" [name]="showPasswordIcon"></ion-icon>
+        </div>
       </ion-item>
 
       <div class="validation-errors">
@@ -62,7 +62,7 @@
       <!-- submit button -->
       <div class="ion-no-padding">
         <ion-button expand="block" type="submit" class="signin-button">Sign in</ion-button>
-        <p routerLink="/forgot" class="forgot">Forgot your password?</p>
+        <p routerLink="/forgot" class="forgot-link">Forgot your password?</p>
       </div>
 
     </ion-list>

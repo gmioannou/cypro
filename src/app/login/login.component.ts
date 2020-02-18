@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   showPassword: boolean = false;
   showPasswordIcon: string = "eye-off";
-  passwordItemType: string = "password";
+  passwordFieldType: string = "password";
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private navController: NavController) { }
 
@@ -75,10 +75,10 @@ export class LoginComponent implements OnInit {
 
     if (this.showPassword) {
       this.showPasswordIcon = "eye";
-      this.passwordItemType = "text";
+      this.passwordFieldType = "text";
     } else {
       this.showPasswordIcon = "eye-off";
-      this.passwordItemType = "password";
+      this.passwordFieldType = "password";
     }
 
   }

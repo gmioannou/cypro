@@ -13,19 +13,23 @@
     <ion-spinner color="primary"></ion-spinner>
   </ion-fab>
 
-  <div class="ion-text-center signin-title">
-    <ion-label color="primary">Rest Password</ion-label>
+  <div class="ion-text-center form-title">
+    <ion-label color="primary">Reset Password</ion-label>
   </div>
 
   <form [formGroup]="forgotForm" (ngSubmit)="submit()">
     <ion-list style="padding: 30px;">
 
+      <ion-item class="form-subtitle">
+        <p color="primary">If the email address is valid and registered, you will be prompt to reset your password.</p>
+      </ion-item>
+      
       <!-- Email -->
       <ion-item>
         <ion-label position="stacked">Email address</ion-label>
         <ion-input required formControlName="email" type="email"></ion-input>
       </ion-item>
-      <div class="validation-errors">
+      <div class="form-validation-errors">
         <ng-container *ngFor="let validation of validation_messages.email">
           <div class="error-message"
             *ngIf="forgotForm.get('email').hasError(validation.type) && (forgotForm.get('email').dirty || forgotForm.get('email').touched)">
@@ -34,9 +38,16 @@
         </ng-container>
       </div>
 
+      <!-- Error messages, after submit -->
+      <ion-item lines="none">
+        <div class="form-error-message" *ngIf="forgotFailed">
+          {{forgotFailedMessage}}
+        </div>
+      </ion-item>
+
       <!-- submit button -->
       <div class="ion-no-padding">
-        <ion-button expand="block" type="submit" class="submit-button">Submit</ion-button>
+        <ion-button expand="block" type="submit" class="form-submit-button">Submit</ion-button>
       </div>
 
     </ion-list>

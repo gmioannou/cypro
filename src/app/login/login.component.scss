@@ -11,21 +11,27 @@
 .validation-errors {
     font-size: 10px;
     font-style: italic;
-    color:#cc0000;
+    color: #cc0000;
 }
 
 .signin-error-message {
     padding-top: 1px;
     font-size: 12px;
     font-style: italic;
-    color:#cc0000;    
+    color: #cc0000;
 }
 
 .register-link {
-    position: absolute; 
-    bottom: 5px; width: 100%;
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
 }
 
-.forgot {
+.forgot-link {
     font-size: 13px;
+}
+
+.eye-icon {
+    color: var(--ion-color-primary);
+    font-size: 24px;
 }

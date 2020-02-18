@@ -1,0 +1,71 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>CyPRO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-fab class="spin" *ngIf="loading" vertical="center" horizontal="center">
+    <ion-spinner color="primary"></ion-spinner>
+  </ion-fab>
+
+  <div class="ion-text-center form-title">
+    <ion-label color="primary">Reset Password</ion-label>
+  </div>
+
+  <form [formGroup]="resetForm" (ngSubmit)="submit()">
+    <ion-list style="padding: 30px;">
+      <!-- Email -->
+      <ion-item>
+        <ion-label position="stacked">Email address</ion-label>
+        <ion-text color="primary">{{email}}</ion-text>
+      </ion-item>
+
+      <!-- Password -->
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <div class="form-validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div class="form-error-message"
+            *ngIf="resetForm.get('password').hasError(validation.type) && (resetForm.get('password').dirty || resetForm.get('password').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Confirm Password -->
+      <ion-item>
+        <ion-label position="stacked">Confirm Password</ion-label>
+        <ion-input required formControlName="confirmPassword" type="password"></ion-input>
+      </ion-item>
+      <div class="form-validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.confirmPassword">
+          <div class="form-error-message"
+            *ngIf="resetForm.get('confirmPassword').hasError(validation.type) && (resetForm.get('confirmPassword').dirty || resetForm.get('confirmPassword').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Error messages, after submit -->
+      <ion-item lines="none">
+        <div class="form-form-error-message" *ngIf="forgotFailed">
+          {{forgotFailedMessage}}
+        </div>
+      </ion-item>
+
+      <!-- submit button -->
+      <div class="ion-no-padding">
+        <ion-button expand="block" type="submit" class="form-submit-button">Submit</ion-button>
+      </div>
+
+    </ion-list>
+  </form>
+
+</ion-content>

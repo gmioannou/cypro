@@ -23,6 +23,14 @@ export class AuthService {
     return axios.post(authUrl + '/users/register', userData)
   }
 
+  forgot(userData) {
+    return axios.post(authUrl + '/users/forgot', userData)
+  }
+
+  reset(userData) {
+    return axios.post(authUrl + '/users/reset', userData)
+  }
+
   async init_login() {
     const stored_token = localStorage.getItem('bearer_token');
     if (stored_token) {

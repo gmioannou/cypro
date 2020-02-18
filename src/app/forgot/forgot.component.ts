@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot',
@@ -8,9 +10,13 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class ForgotComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {}
+
+  loading: boolean = false;
+  forgotFailed: boolean = false;
+  forgotFailedMessage: string = "";
 
   forgotForm: FormGroup = this.formBuilder.group({
     email: new FormControl('', Validators.compose([
@@ -20,7 +26,36 @@ export class ForgotComponent implements OnInit {
   });
 
   submit() {
-    console.log(this.forgotForm.value)
+    if (this.forgotForm.valid) {
+      const userData = this.forgotForm.value;
+
+      // call auth service to reset password
+      this.loading = true;
+      this.authService.forgot(userData)
+        .then(res => {
+          const message = res.data.message;
+          const user = res.data.user;
+          if (res.data.user) {
+            this.router.navigate(['/reset', user.email]);
+          } else {
+            this.forgotFailed = true;
+            this.forgotFailedMessage = message        
+          }
+          
+          this.loading = false;
+          console.log(res.data.message);
+        })
+        .catch((error) => {
+          this.loading = false;
+          this.forgotFailed = true;
+          this.forgotFailedMessage = error
+          console.log(error);
+        });
+    } else {
+      this.forgotFailed = true;
+      this.forgotFailedMessage = "All fields are required.";
+      console.log('Invalid form.')
+    }
   }
 
   validation_messages = {

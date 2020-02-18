@@ -94,10 +94,8 @@
         <ion-label position="stacked">Confirm Password</ion-label>
         <ion-input required formControlName="confirmPassword" type="password"></ion-input>
       </ion-item>
-
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validation_messages.confirmPassword">
-          <!-- {{validation.type}} -->
           <div class="error-message"
             *ngIf="registerForm.get('confirmPassword').hasError(validation.type) && (registerForm.get('confirmPassword').dirty || registerForm.get('confirmPassword').touched)">
             {{ validation.message }}

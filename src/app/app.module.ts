@@ -14,18 +14,21 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForgotComponent } from './forgot/forgot.component';
+import { ResetComponent } from './reset/reset.component';
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    LoginComponent, 
+    AppComponent,
+    LoginComponent,
     RegisterComponent,
     ForgotComponent,
+    ResetComponent,
   ],
   entryComponents: [
     LoginComponent,
     RegisterComponent,
     ForgotComponent,
+    ResetComponent,
   ],
   imports: [BrowserModule,
     IonicModule.forRoot(),
@@ -42,4 +45,5 @@ import { ForgotComponent } from './forgot/forgot.component';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
