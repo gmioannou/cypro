@@ -15,6 +15,9 @@ export class ResetComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private navController: NavController, private authService: AuthService, private route: ActivatedRoute) { }
 
   email: any;
+  loading: boolean = false;
+  resetFailed: boolean = false;
+  resetFailedMessage: string = "";
 
   resetForm: FormGroup = this.formBuilder.group({
     email: new FormControl('', Validators.compose([
