@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-forgot',
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ForgotComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private navController: NavController) { }
 
   ngOnInit() {}
 
@@ -34,9 +34,9 @@ export class ForgotComponent implements OnInit {
       this.authService.forgot(userData)
         .then(res => {
           const message = res.data.message;
-          const user = res.data.user;
+
           if (res.data.user) {
-            this.router.navigate(['/reset', user.email]);
+            this.navController.navigateBack('/home');
           } else {
             this.forgotFailed = true;
             this.forgotFailedMessage = message        
